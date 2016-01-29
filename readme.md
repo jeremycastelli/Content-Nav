@@ -11,11 +11,16 @@ This a a wordpress plugin that create a navigation based on headings(H2-h5) of t
 
 <?php 
 	// specify the depth level of the nav
-	$limit = 3;
-	echo jelli_get_content_menu($limit); 
+	$args = array(
+		'limit'   => 3
+	);
+	echo jelli_get_content_nav($args); 
 ?>
 
 ```
 
 
 ##Changelog
+
+###v1.0.1
+- array of arguments as parameters

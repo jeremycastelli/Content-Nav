@@ -2,7 +2,7 @@
 /*
 Plugin Name: Content Nav
 Description: Create a content navigation based on headings
-Version: 1.0.0
+Version: 1.0.1
 Author: Jeremy Castelli
 Author URI: http://jeremycastelli.com
 Inspiration: Andi Dittrich <http://andidittrich.de>
@@ -14,8 +14,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-function jelli_get_content_menu($limit){
-	$cm = new Jelli_Content_Nav($limit);
+function jelli_get_content_menu($args){
+	$cm = new Jelli_Content_Nav($args);
 	return $cm->getNav();
 }
 
@@ -25,9 +25,13 @@ class Jelli_Content_Nav
 	private $headingLimit;
 	private $cpt = 0;
 
-	public function __construct($limit = 2){
+	public function __construct($args = null){
+		$defaults = array(
+			'limit' => 2,
+		);
 
-		$this->headingLimit = array(2,$limit);
+		$r = wp_parse_args( $args, $defaults );
+		$this->headingLimit = array(2,$r['limit']);
 
 		add_filter('the_content', array($this,'findHeadings'), 9999, 1);
 		apply_filters('the_content',get_the_content());
