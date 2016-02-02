@@ -71,7 +71,7 @@ class Jelli_Content_Nav
 			$firstElement = array_shift($this->nav_items);
 			$currentLevel = $firstElement['level'];
 
-			$output = '';
+			$output = '<nav class="content-nav">';
 
 			// generate startup structure / first element
 			for ($i=0;$i<($currentLevel-1);$i++){
@@ -113,6 +113,7 @@ class Jelli_Content_Nav
 			for ($i=0;$i<($currentLevel-1);$i++){
 			   $output .= '</li></ul>';
 			}
+			$output.="</nav>"
 			return $output;
 		}
 		else{
