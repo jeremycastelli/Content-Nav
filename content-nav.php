@@ -113,7 +113,7 @@ class Jelli_Content_Nav
 			for ($i=0;$i<($currentLevel-1);$i++){
 			   $output .= '</li></ul>';
 			}
-			$output.="</nav>"
+			$output.="</nav>";
 			return $output;
 		}
 		else{
